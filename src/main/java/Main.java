@@ -19,9 +19,6 @@ public class Main {
 
         System.out.println("Страна с самыми средними показателями среди \"Southeastern Asia\" и \"Sub-Saharan Africa\": " + dbHandler.getCountryWithMostAverageStats(allStatistics));
 
-
-
-
         // Вывод графика
         EventQueue.invokeLater(() -> {
             var ex = new BarChartEx();

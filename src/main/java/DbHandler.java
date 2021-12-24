@@ -112,14 +112,14 @@ public class DbHandler {
         var country = "";
         var min = 100d;
         for (var a: statistics) {
-            middle += a.happinessScore + a.lowerConfInterval + a.upperConfInterval + a.economy + a.family + a.health + a.freedom + a.trust + a.generosity + a.dystopiaResidual;
+            middle += a.happinessRank + a.happinessScore + a.lowerConfInterval + a.upperConfInterval + a.economy + a.family + a.health + a.freedom + a.trust + a.generosity + a.dystopiaResidual;
         }
         middle /= statistics.size();
         for (var c : statistics) {
             var sum = 0d;
             if (Objects.equals(c.region, "Southeastern Asia")
                     || Objects.equals(c.region, "Sub-Saharan Africa")) {
-                sum = c.happinessScore + c.lowerConfInterval + c.upperConfInterval + c.economy + c.family + c.health + c.freedom + c.trust + c.generosity + c.dystopiaResidual;
+                sum = c.happinessRank + c.happinessScore + c.lowerConfInterval + c.upperConfInterval + c.economy + c.family + c.health + c.freedom + c.trust + c.generosity + c.dystopiaResidual;
                 if (min > Math.abs(middle - sum)) {
                     min = Math.abs(middle - sum);
                     country = c.country;
