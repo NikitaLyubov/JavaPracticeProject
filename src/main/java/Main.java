@@ -15,7 +15,7 @@ public class Main {
 
         var allStatistics = dbHandler.getAllStatistics();
 
-        System.out.println("Самый низкий показатель щедрости среди  \"Middle East and Northern Africa\" и \"Central and Eastern Europe\": "+ dbHandler.getLowestGenerosity(allStatistics));
+        System.out.println("Самый низкий показатель щедрости среди  \"Middle East and Northern Africa\" и \"Central and Eastern Europe\": " + dbHandler.getLowestGenerosity(allStatistics));
 
         System.out.println("Страна с самыми средними показателями среди \"Southeastern Asia\" и \"Sub-Saharan Africa\": " + dbHandler.getCountryWithMostAverageStats(allStatistics));
 

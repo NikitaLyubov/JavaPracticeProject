@@ -1,4 +1,5 @@
 import org.sqlite.JDBC;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,18 +45,18 @@ public class DbHandler {
             // orderby sqlite
             while (resultSet.next()) {
                 products.add(new Statistics(resultSet.getString("Country"),
-                resultSet.getString("Region"),
-                resultSet.getInt("HappinessRank"),
-                resultSet.getDouble("HappinessScore"),
-                resultSet.getDouble("LowerConfidenceInterval"),
-                resultSet.getDouble("UpperConfidenceInterval"),
-                resultSet.getDouble("Economy"),
-                resultSet.getDouble("Family"),
-                resultSet.getDouble("Health"),
-                resultSet.getDouble("Freedom"),
-                resultSet.getDouble("Trust"),
-                resultSet.getDouble("Generosity"),
-                resultSet.getDouble("DystopiaResidual")));
+                        resultSet.getString("Region"),
+                        resultSet.getInt("HappinessRank"),
+                        resultSet.getDouble("HappinessScore"),
+                        resultSet.getDouble("LowerConfidenceInterval"),
+                        resultSet.getDouble("UpperConfidenceInterval"),
+                        resultSet.getDouble("Economy"),
+                        resultSet.getDouble("Family"),
+                        resultSet.getDouble("Health"),
+                        resultSet.getDouble("Freedom"),
+                        resultSet.getDouble("Trust"),
+                        resultSet.getDouble("Generosity"),
+                        resultSet.getDouble("DystopiaResidual")));
             }
             // Возвращаем наш список
             return products;
@@ -67,7 +68,7 @@ public class DbHandler {
         }
     }
 
-        // Добавление статистики в БД
+    // Добавление статистики в БД
     public void addStats(Statistics statistics) {
         // Создадим подготовленное выражение, чтобы избежать SQL-инъекций
         try (PreparedStatement statement = this.connection.prepareStatement(
@@ -102,7 +103,7 @@ public class DbHandler {
         for (var w : statistics) {
             if (w.region.equals("Middle East and Northern Africa") || w.region.equals("Central and Eastern Europe"))
                 if (w.generosity < lowest)
-                    lowest =  w.generosity;
+                    lowest = w.generosity;
         }
         return lowest;
     }
@@ -111,7 +112,7 @@ public class DbHandler {
         var middle = 0d;
         var country = "";
         var min = 100d;
-        for (var a: statistics) {
+        for (var a : statistics) {
             middle += a.happinessRank + a.happinessScore + a.lowerConfInterval + a.upperConfInterval + a.economy + a.family + a.health + a.freedom + a.trust + a.generosity + a.dystopiaResidual;
         }
         middle /= statistics.size();
@@ -128,7 +129,6 @@ public class DbHandler {
         }
         return country;
     }
-
 
 
     public void cleanDb() {

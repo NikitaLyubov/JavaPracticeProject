@@ -8,7 +8,7 @@ public class Parser {
     private final ArrayList<Statistics> statistics;
     private BufferedReader reader;
 
-    public Parser(String path){
+    public Parser(String path) {
         try {
             reader = new BufferedReader(new FileReader(path));
         } catch (FileNotFoundException e) {
@@ -17,7 +17,7 @@ public class Parser {
         statistics = new ArrayList<>();
     }
 
-    public void parse()  {
+    public void parse() {
         var line = "";
         var count = 0;
         while (true) {
@@ -29,14 +29,15 @@ public class Parser {
                     continue;
                 var stats = line.split(",");
                 statistics.add(new Statistics(stats[0], stats[1], Integer.parseInt(stats[2]), Double.parseDouble(stats[3]),
-                        Double.parseDouble(stats[4]), Double.parseDouble(stats[5]),Double.parseDouble(stats[6]),
+                        Double.parseDouble(stats[4]), Double.parseDouble(stats[5]), Double.parseDouble(stats[6]),
                         Double.parseDouble(stats[7]), Double.parseDouble(stats[8]), Double.parseDouble(stats[9]),
-                        Double.parseDouble(stats[10]),Double.parseDouble(stats[11]),Double.parseDouble(stats[12])));
+                        Double.parseDouble(stats[10]), Double.parseDouble(stats[11]), Double.parseDouble(stats[12])));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
+
     public ArrayList<Statistics> getStatistics() {
         return statistics;
     }

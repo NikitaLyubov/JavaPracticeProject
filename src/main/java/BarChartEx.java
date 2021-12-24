@@ -7,9 +7,11 @@ import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import java.awt.Color;
+
 import org.jfree.chart.renderer.category.StackedBarRenderer;
 import org.jfree.chart.renderer.category.StandardBarPainter;
 import org.jfree.data.category.CategoryDataset;
@@ -41,7 +43,7 @@ public class BarChartEx extends JFrame {
         var dataset = new DefaultCategoryDataset();
         var data = new Parser("./src/main/resources/data.csv");
         data.parse();
-        for (var countryStat: data.getStatistics()) {
+        for (var countryStat : data.getStatistics()) {
             dataset.setValue(countryStat.generosity, "Generosity", countryStat.country);
         }
         return dataset;
@@ -65,7 +67,7 @@ public class BarChartEx extends JFrame {
         renderer.setBaseItemLabelsVisible(true);
         renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
 
-        CategoryPlot plot = new CategoryPlot( dataset,
+        CategoryPlot plot = new CategoryPlot(dataset,
                 categoryAxis,
                 valueAxis,
                 renderer);
@@ -73,7 +75,7 @@ public class BarChartEx extends JFrame {
         plot.setOrientation(PlotOrientation.VERTICAL);
 
 
-        return new JFreeChart( "Показатели уровня щедрости всех стран",
+        return new JFreeChart("Показатели уровня щедрости всех стран",
                 JFreeChart.DEFAULT_TITLE_FONT,
                 plot,
                 true);
